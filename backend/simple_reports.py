@@ -9,7 +9,7 @@ sys.path.append('/var/task/python')
 
 # Note: Using text-based logo to avoid Pillow dependency
 
-from fpdf import FPDF
+from fpdf2 import FPDF
 
 s3_client = boto3.client('s3')
 

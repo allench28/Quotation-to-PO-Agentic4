@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-08-25T17:15:22.445Z" agent="5.0" etag="draw.io" version="24.7.17">
+  <diagram name="Agentic-AI-Workflow" id="agentic-workflow">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="Agentic AI Quotation Processing Workflow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="450" y="20" width="500" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Email Triggers Section -->
+        <mxCell id="email-section" value="Email Triggers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Email Sources -->
+        <mxCell id="ses-email" value="Amazon SES&#xa;Email Receiver" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.simple_email_service;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="workmail" value="Amazon WorkMail&#xa;Integration" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.workmail;" vertex="1" parent="1">
+          <mxGeometry x="200" y="120" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="eventbridge" value="EventBridge&#xa;Email Events" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#FF4F8B;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;" vertex="1" parent="1">
+          <mxGeometry x="140" y="200" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- AI Agent Orchestrator -->
+        <mxCell id="orchestrator-section" value="AI Agent Orchestrator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="80" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="step-functions" value="Step Functions&#xa;Workflow Engine" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#FF4F8B;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;" vertex="1" parent="1">
+          <mxGeometry x="430" y="120" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="bedrock-agent" value="Bedrock Agent&#xa;Decision Maker" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;" vertex="1" parent="1">
+          <mxGeometry x="550" y="120" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lambda-orchestrator" value="Lambda&#xa;Orchestrator" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="490" y="200" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Intelligence Layer -->
+        <mxCell id="intelligence-section" value="AI Intelligence Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#4CAF50;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="80" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="comprehend" value="Amazon Comprehend&#xa;Text Analysis" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.comprehend;" vertex="1" parent="1">
+          <mxGeometry x="780" y="120" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="textract" value="Amazon Textract&#xa;Document OCR" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.textract;" vertex="1" parent="1">
+          <mxGeometry x="900" y="120" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="bedrock-kb" value="Bedrock Knowledge Base&#xa;Company Policies" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;" vertex="1" parent="1">
+          <mxGeometry x="840" y="200" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Processing Workflow -->
+        <mxCell id="workflow-section" value="Intelligent Processing Workflow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="320" width="1000" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- Workflow Steps -->
+        <mxCell id="email-parser" value="Email Parser&#xa;Lambda" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-classifier" value="Document&#xa;Classifier" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;" vertex="1" parent="1">
+          <mxGeometry x="180" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="priority-analyzer" value="Priority&#xa;Analyzer" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.comprehend;" vertex="1" parent="1">
+          <mxGeometry x="280" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="vendor-matcher" value="Vendor&#xa;Matcher" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4D72F3;gradientDirection=north;fillColor=#3334B9;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1" parent="1">
+          <mxGeometry x="380" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="approval-engine" value="Approval&#xa;Engine" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#116D5B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;" vertex="1" parent="1">
+          <mxGeometry x="480" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="po-generator" value="Enhanced PO&#xa;Generator" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="580" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="notification-engine" value="Smart&#xa;Notifications" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;" vertex="1" parent="1">
+          <mxGeometry x="680" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="erp-integration" value="ERP/CRM&#xa;Integration" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#FF4F8B;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
+          <mxGeometry x="780" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="audit-logger" value="Audit &amp;&#xa;Compliance" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F34482;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudtrail;" vertex="1" parent="1">
+          <mxGeometry x="880" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="analytics-engine" value="Analytics &amp;&#xa;Insights" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4D72F3;gradientDirection=north;fillColor=#3334B9;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.quicksight;" vertex="1" parent="1">
+          <mxGeometry x="980" y="360" width="50" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision Points -->
+        <mxCell id="decision-section" value="Intelligent Decision Points" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#D32F2F;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="540" width="1000" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="decision1" value="Urgent?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#D32F2F;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="570" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="decision2" value="Known&#xa;Vendor?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#D32F2F;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="220" y="570" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="decision3" value="Auto&#xa;Approve?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#D32F2F;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="570" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="decision4" value="Budget&#xa;OK?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#D32F2F;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="570" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="decision5" value="Compliance&#xa;Check?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#D32F2F;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="570" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Output Actions -->
+        <mxCell id="output-section" value="Automated Actions &amp; Outputs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="700" width="1000" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="auto-approve" value="Auto&#xa;Approve" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#4CAF50;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="740" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="escalate" value="Escalate to&#xa;Manager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#FF9800;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="740" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="negotiate" value="Auto&#xa;Negotiate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="740" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="schedule" value="Schedule&#xa;Meeting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#F44336;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="740" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="generate-report" value="Generate&#xa;Report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3E5FC;strokeColor=#03A9F4;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="740" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="update-erp" value="Update&#xa;ERP/CRM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEDC8;strokeColor=#8BC34A;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="740" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="send-notifications" value="Send Smart&#xa;Notifications" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8BBD9;strokeColor=#E91E63;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="740" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="track-metrics" value="Track&#xa;Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#673AB7;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="740" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Workflow Connections -->
+        
+        <!-- Email to EventBridge -->
+        <mxCell id="conn1" value="Email Received" style="endArrow=classic;html=1;rounded=0;strokeColor=#1976D2;strokeWidth=2;" edge="1" parent="1" source="ses-email" target="eventbridge">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="190" as="sourcePoint" />
+            <mxPoint x="160" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn2" value="Email Received" style="endArrow=classic;html=1;rounded=0;strokeColor=#1976D2;strokeWidth=2;" edge="1" parent="1" source="workmail" target="eventbridge">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="190" as="sourcePoint" />
+            <mxPoint x="180" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- EventBridge to Step Functions -->
+        <mxCell id="conn3" value="Trigger Workflow" style="endArrow=classic;html=1;rounded=0;strokeColor=#F57C00;strokeWidth=2;" edge="1" parent="1" source="eventbridge" target="step-functions">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="220" as="sourcePoint" />
+            <mxPoint x="420" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Step Functions to Bedrock Agent -->
+        <mxCell id="conn4" value="Decision Logic" style="endArrow=classic;html=1;rounded=0;strokeColor=#F57C00;strokeWidth=2;" edge="1" parent="1" source="step-functions" target="bedrock-agent">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="150" as="sourcePoint" />
+            <mxPoint x="540" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Bedrock Agent to Intelligence Services -->
+        <mxCell id="conn5" value="Analyze" style="endArrow=classic;html=1;rounded=0;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="bedrock-agent" target="comprehend">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="620" y="150" as="sourcePoint" />
+            <mxPoint x="760" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn6" value="Extract" style="endArrow=classic;html=1;rounded=0;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="bedrock-agent" target="textract">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="620" y="150" as="sourcePoint" />
+            <mxPoint x="880" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Orchestrator to Processing Workflow -->
+        <mxCell id="conn7" value="Orchestrate" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="lambda-orchestrator" target="email-parser">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="520" y="270" as="sourcePoint" />
+            <mxPoint x="120" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Processing Workflow Chain -->
+        <mxCell id="conn8" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="email-parser" target="document-classifier">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="140" y="385" as="sourcePoint" />
+            <mxPoint x="170" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn9" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="document-classifier" target="priority-analyzer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="385" as="sourcePoint" />
+            <mxPoint x="270" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn10" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="priority-analyzer" target="vendor-matcher">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="385" as="sourcePoint" />
+            <mxPoint x="370" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn11" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="vendor-matcher" target="approval-engine">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="385" as="sourcePoint" />
+            <mxPoint x="470" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn12" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="approval-engine" target="po-generator">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="385" as="sourcePoint" />
+            <mxPoint x="570" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn13" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="po-generator" target="notification-engine">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="640" y="385" as="sourcePoint" />
+            <mxPoint x="670" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn14" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="notification-engine" target="erp-integration">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="740" y="385" as="sourcePoint" />
+            <mxPoint x="770" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn15" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="erp-integration" target="audit-logger">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="840" y="385" as="sourcePoint" />
+            <mxPoint x="870" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn16" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;strokeWidth=2;" edge="1" parent="1" source="audit-logger" target="analytics-engine">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="940" y="385" as="sourcePoint" />
+            <mxPoint x="970" y="385" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Decision Flow -->
+        <mxCell id="conn17" value="Evaluate" style="endArrow=classic;html=1;rounded=0;strokeColor=#D32F2F;strokeWidth=2;" edge="1" parent="1" source="priority-analyzer" target="decision1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="305" y="420" as="sourcePoint" />
+            <mxPoint x="150" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn18" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#D32F2F;strokeWidth=2;" edge="1" parent="1" source="decision1" target="decision2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="190" y="600" as="sourcePoint" />
+            <mxPoint x="210" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn19" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#D32F2F;strokeWidth=2;" edge="1" parent="1" source="decision2" target="decision3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="600" as="sourcePoint" />
+            <mxPoint x="310" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn20" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#D32F2F;strokeWidth=2;" edge="1" parent="1" source="decision3" target="decision4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="600" as="sourcePoint" />
+            <mxPoint x="410" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn21" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#D32F2F;strokeWidth=2;" edge="1" parent="1" source="decision4" target="decision5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="600" as="sourcePoint" />
+            <mxPoint x="510" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Decision to Actions -->
+        <mxCell id="conn22" value="Yes" style="endArrow=classic;html=1;rounded=0;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="decision3" target="auto-approve">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="640" as="sourcePoint" />
+            <mxPoint x="130" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn23" value="No" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF9800;strokeWidth=2;" edge="1" parent="1" source="decision4" target="escalate">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="450" y="640" as="sourcePoint" />
+            <mxPoint x="230" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Key Features Box -->
+        <mxCell id="features-box" value="🤖 Agentic AI Features:&#xa;&#xa;• Email-triggered workflows&#xa;• Intelligent document classification&#xa;• Dynamic priority assessment&#xa;• Automated vendor matching&#xa;• Smart approval routing&#xa;• Real-time negotiations&#xa;• Proactive notifications&#xa;• ERP/CRM integration&#xa;• Compliance monitoring&#xa;• Predictive analytics" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=0;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="80" width="200" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Intelligence Capabilities -->
+        <mxCell id="intelligence-box" value="🧠 AI Intelligence:&#xa;&#xa;• Natural language understanding&#xa;• Context-aware decisions&#xa;• Learning from patterns&#xa;• Risk assessment&#xa;• Budget optimization&#xa;• Vendor relationship analysis&#xa;• Compliance checking&#xa;• Fraud detection&#xa;• Performance tracking&#xa;• Continuous improvement" style="text;html=1;strokeColor=#4CAF50;fillColor=#E8F5E8;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=0;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="320" width="200" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Business Benefits -->
+        <mxCell id="benefits-box" value="💼 Business Benefits:&#xa;&#xa;• 90% faster processing&#xa;• 24/7 automated operations&#xa;• Reduced human errors&#xa;• Cost optimization&#xa;• Improved compliance&#xa;• Better vendor relations&#xa;• Real-time insights&#xa;• Scalable architecture&#xa;• Audit trail&#xa;• ROI tracking" style="text;html=1;strokeColor=#F57C00;fillColor=#FFF3E0;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=0;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="560" width="200" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Workflow Labels -->
+        <mxCell id="label1" value="1. Email Trigger" style="text;html=1;strokeColor=none;fillColor=#E3F2FD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="430" width="80" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label2" value="2. AI Classification" style="text;html=1;strokeColor=none;fillColor=#E8F5E8;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="430" width="80" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label3" value="3. Priority Analysis" style="text;html=1;strokeColor=none;fillColor=#FFF3E0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="430" width="80" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label4" value="4. Smart Decisions" style="text;html=1;strokeColor=none;fillColor=#FFEBEE;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="650" width="80" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label5" value="5. Automated Actions" style="text;html=1;strokeColor=none;fillColor=#E1F5FE;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="790" width="100" height="25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
