@@ -16,7 +16,7 @@ s3_client = boto3.client('s3')
 # Load configuration
 def load_config():
     try:
-        with open('env-vars.json', 'r') as f:
+        with open('env-vars1.json', 'r') as f:
             return json.load(f)
     except:
         return {'DOCS_BUCKET': os.environ.get('S3_BUCKET', 'quotation-processor-docs')}

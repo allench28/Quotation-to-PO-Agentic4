@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Disable AWS CLI pager to prevent interactive prompts
+export AWS_PAGER=""
+
 echo "🚀 AI Quotation Processor - Final Deployment (us-east-1)"
 echo "========================================================"
 
@@ -64,8 +67,8 @@ cd backend
 zip ../lambda-function.zip document_processor.py simple_reports.py
 cd ..
 
-# Add env-vars.json to Lambda package
-zip -u lambda-function.zip env-vars.json
+# Add env-vars1.json to Lambda package
+zip -u lambda-function.zip env-vars1.json
 
 # Check if Lambda function exists and update or create
 if aws lambda get-function --function-name ${PROJECT_NAME}-processor --region $REGION >/dev/null 2>&1; then
@@ -105,8 +108,8 @@ aws apigateway create-deployment --rest-api-id $API_ID --stage-name prod --regio
 
 API_ENDPOINT="https://$API_ID.execute-api.$REGION.amazonaws.com/prod/upload"
 
-# Store environment variables in env-vars.json
-cat > env-vars.json << EOF
+# Store environment variables in env-vars1.json
+cat > env-vars1.json << EOF
 {
   "API_GW_URL": "$API_ENDPOINT",
   "WEB_BUCKET": "$WEB_BUCKET",
@@ -119,10 +122,10 @@ EOF
 echo "🎨 Step 5/5: Frontend Deployment"
 echo "================================="
 
-# Read API endpoint from env-vars.json
-API_GW_URL=$(cat env-vars.json | grep -o '"API_GW_URL": "[^"]*"' | cut -d'"' -f4)
+# Read API endpoint from env-vars1.json
+API_GW_URL=$(cat env-vars1.json | grep -o '"API_GW_URL": "[^"]*"' | cut -d'"' -f4)
 
-# Update frontend with API endpoint from env-vars.json
+# Update frontend with API endpoint from env-vars1.json
 sed -i "s|YOUR_API_GATEWAY_ENDPOINT|$API_GW_URL|g" frontend/index.html
 sed -i "s|https://[^']*execute-api[^']*|$API_GW_URL|g" frontend/index.html
 

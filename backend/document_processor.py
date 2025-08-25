@@ -27,10 +27,10 @@ s3_client = boto3.client('s3')
 dynamodb = boto3.resource('dynamodb')
 bedrock_client = boto3.client('bedrock-runtime')
 
-# Load configuration from env-vars.json
+# Load configuration from env-vars1.json
 def load_config():
     try:
-        with open('env-vars.json', 'r') as f:
+        with open('env-vars1.json', 'r') as f:
             return json.load(f)
     except:
         # Fallback to environment variables if file doesn't exist
