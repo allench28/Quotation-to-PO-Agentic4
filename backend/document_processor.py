@@ -211,20 +211,54 @@ def process_with_bedrock(text_content):
     try:
         bedrock_client_east1 = boto3.client('bedrock-runtime', region_name='us-east-1')
         
+        # Use Claude 3.5 Sonnet with correct model ID
+        model_id = "anthropic.claude-3-5-sonnet-20240620-v1:0"
+        print(f"Calling Bedrock with model: {model_id}")
+        
+        # Improved prompt for better extraction
+        enhanced_prompt = f"""
+You are a data extraction expert. Extract information from this quotation document and return ONLY a valid JSON object.
+
+Document text:
+{text_content}
+
+Extract these exact fields and return as JSON:
+{{
+  "company_name": "supplier company name",
+  "email": "email address",
+  "phone": "full phone number with country code",
+  "address": "complete supplier address",
+  "buyer_name": "buyer/customer company name",
+  "buyer_address": "complete buyer address",
+  "quote_number": "quotation/quote number (like Q6489)",
+  "date": "date in YYYY-MM-DD format",
+  "items": [
+    {{
+      "description": "item name/description",
+      "quantity": number,
+      "unit_price": number,
+      "total_amount": number
+    }}
+  ],
+  "subtotal": number,
+  "tax": number,
+  "total": number
+}}
+
+Return ONLY the JSON object, no other text.
+"""
+        
         request_body = {
             "anthropic_version": "bedrock-2023-05-31",
             "max_tokens": 2000,
             "messages": [
                 {
                     "role": "user",
-                    "content": f"Extract quotation data from this text and return JSON with fields: company_name, email, phone, address, buyer_name, buyer_address, quote_number, date, items (array), subtotal, tax, total. Text: {text_content}"
+                    "content": enhanced_prompt
                 }
             ]
         }
         
-        # Try Claude 3 Haiku first (more commonly available)
-        model_id = "anthropic.claude-3-haiku-20240307-v1:0"
-        print(f"Calling Bedrock with model: {model_id}")
         print(f"Request body: {json.dumps(request_body, indent=2)}")
         
         response = bedrock_client_east1.invoke_model(
