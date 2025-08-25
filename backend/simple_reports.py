@@ -1,6 +1,7 @@
 import os
 import csv
 import boto3
+import json
 from io import StringIO, BytesIO
 from datetime import datetime
 import sys
@@ -12,9 +13,19 @@ from fpdf import FPDF
 
 s3_client = boto3.client('s3')
 
+# Load configuration
+def load_config():
+    try:
+        with open('env-vars.json', 'r') as f:
+            return json.load(f)
+    except:
+        return {'DOCS_BUCKET': os.environ.get('S3_BUCKET', 'quotation-processor-docs')}
+
+config = load_config()
+
 def generate_pdf_report(quotation_id, extracted_data, purchase_order):
     """Generate structured purchase order PDF matching PO_format.json"""
-    bucket_name = os.environ.get('S3_BUCKET', 'quotation-processor-docs')
+    bucket_name = config.get('DOCS_BUCKET', os.environ.get('S3_BUCKET', 'quotation-processor-docs'))
     
     pdf = FPDF()
     pdf.add_page()
@@ -142,7 +153,7 @@ def generate_pdf_report(quotation_id, extracted_data, purchase_order):
 
 def generate_csv_report(quotation_id, extracted_data, purchase_order):
     """Generate CSV report and upload to S3 with public access"""
-    bucket_name = os.environ.get('S3_BUCKET', 'quotation-processor-docs')
+    bucket_name = config.get('DOCS_BUCKET', os.environ.get('S3_BUCKET', 'quotation-processor-docs'))
     
     csv_buffer = StringIO()
     writer = csv.writer(csv_buffer)

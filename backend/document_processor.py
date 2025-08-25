@@ -27,6 +27,20 @@ s3_client = boto3.client('s3')
 dynamodb = boto3.resource('dynamodb')
 bedrock_client = boto3.client('bedrock-runtime')
 
+# Load configuration from env-vars.json
+def load_config():
+    try:
+        with open('env-vars.json', 'r') as f:
+            return json.load(f)
+    except:
+        # Fallback to environment variables if file doesn't exist
+        return {
+            'DOCS_BUCKET': os.environ.get('S3_BUCKET', 'quotation-processor-docs'),
+            'DYNAMODB_TABLE': os.environ.get('DYNAMODB_TABLE', 'quotation-processor-quotations')
+        }
+
+config = load_config()
+
 def handler(event, context):
     try:
         # Handle different HTTP methods for Function URLs
@@ -372,7 +386,7 @@ def parse_fallback(text):
 
 def store_quotation(quotation_id, extracted_data, file_name, raw_text=""):
     """Store extracted quotation data in DynamoDB"""
-    table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
+    table = dynamodb.Table(config.get('DYNAMODB_TABLE', os.environ.get('DYNAMODB_TABLE', 'quotation-processor-quotations')))
     
     def safe_decimal(value):
         try:

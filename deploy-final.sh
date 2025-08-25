@@ -25,6 +25,12 @@ WEB_BUCKET="${PROJECT_NAME}-web-${TIMESTAMP}"
 aws s3 mb s3://$DOCS_BUCKET --region $REGION
 aws s3 mb s3://$WEB_BUCKET --region $REGION
 
+# Verify buckets were created successfully
+echo "Verifying S3 buckets..."
+aws s3 ls s3://$DOCS_BUCKET --region $REGION > /dev/null || { echo "Error: Failed to create DOCS_BUCKET"; exit 1; }
+aws s3 ls s3://$WEB_BUCKET --region $REGION > /dev/null || { echo "Error: Failed to create WEB_BUCKET"; exit 1; }
+echo "S3 buckets verified successfully"
+
 # Make both buckets public
 aws s3api put-public-access-block --bucket $DOCS_BUCKET --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false" --region $REGION
 aws s3api put-bucket-policy --bucket $DOCS_BUCKET --policy "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"PublicReadGetObject\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::$DOCS_BUCKET/*\"}]}" --region $REGION
@@ -58,7 +64,18 @@ cd backend
 zip ../lambda-function.zip document_processor.py simple_reports.py
 cd ..
 
-aws lambda create-function --function-name ${PROJECT_NAME}-processor --runtime python3.11 --role arn:aws:iam::$AWS_ACCOUNT_ID:role/${PROJECT_NAME}-role --handler document_processor.handler --zip-file fileb://lambda-function.zip --timeout 300 --environment Variables="{DYNAMODB_TABLE=${PROJECT_NAME}-quotations,S3_BUCKET=$DOCS_BUCKET}" --layers $LAYER_ARN --region $REGION
+# Add env-vars.json to Lambda package
+zip -u lambda-function.zip env-vars.json
+
+# Check if Lambda function exists and update or create
+if aws lambda get-function --function-name ${PROJECT_NAME}-processor --region $REGION >/dev/null 2>&1; then
+    echo "Updating existing Lambda function..."
+    aws lambda update-function-code --function-name ${PROJECT_NAME}-processor --zip-file fileb://lambda-function.zip --region $REGION
+    aws lambda update-function-configuration --function-name ${PROJECT_NAME}-processor --environment Variables="{DYNAMODB_TABLE=${PROJECT_NAME}-quotations,S3_BUCKET=$DOCS_BUCKET}" --layers $LAYER_ARN --region $REGION
+else
+    echo "Creating new Lambda function..."
+    aws lambda create-function --function-name ${PROJECT_NAME}-processor --runtime python3.11 --role arn:aws:iam::$AWS_ACCOUNT_ID:role/${PROJECT_NAME}-role --handler document_processor.handler --zip-file fileb://lambda-function.zip --timeout 300 --environment Variables="{DYNAMODB_TABLE=${PROJECT_NAME}-quotations,S3_BUCKET=$DOCS_BUCKET}" --layers $LAYER_ARN --region $REGION
+fi
 
 rm lambda-function.zip
 
