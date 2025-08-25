@@ -188,32 +188,10 @@ def process_with_bedrock(text_content):
     print(f"Sending to Bedrock - text length: {len(text_content)}")
     print(f"Text content: {text_content}")
     
-    # If PDF extraction failed, use the sample data you provided
-    if len(text_content.strip()) < 100:
-        print("PDF extraction failed, using sample quotation data")
-        text_content = """
-        ABC Stationery Supplies Pte Ltd.
-        10 Anson Road, #15-01 International Plaza
-        Singapore 079903
-        Phone: +65 6123 4567
-        Email: contact@abcstationery.com
-        From:
-        ABC Stationery Supplies Pte Ltd.
-        10 Anson Road, #15-01 International Plaza
-        Singapore 079903
-        To:
-        XYZ School Supplies
-        25 Bukit Timah Road
-        Singapore 259756
-        QUOTATION
-        Quote Number: QTN-2025-001
-        Date: 18 August 2025
-        Item Description Quantity Unit Price (SGD) Total (SGD)
-        Pen Blue Ink Ballpoint Pen 50 0.50 25.00
-        Notebook A4 Size, 200 Pages 30 2.00 60.00
-        Stapler Heavy Duty Stapler 10 5.00 50.00
-        Subtotal: 135.00
-        """
+    # Check if PDF extraction failed
+    if len(text_content.strip()) < 50:
+        print("WARNING: Very little text extracted from PDF")
+        # Continue with whatever text was extracted instead of replacing it
     
     # Use Bedrock in us-east-1 where Claude models are available
     try:
@@ -363,27 +341,31 @@ def unused_bedrock_code():
         return result
     except Exception as e:
         print(f"JSON parsing error: {e}, using fallback")
-        return parse_fallback(extracted_text)
+        return parse_fallback(text_content)
 
 def parse_fallback(text):
     """Fallback parsing if JSON extraction fails"""
+    import re
+    
+    # Try basic text parsing instead of returning hardcoded data
+    company_match = re.search(r'([A-Z][^\n]*(?:Ltd|Inc|Corp|Company|Pte))', text, re.IGNORECASE)
+    email_match = re.search(r'([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})', text)
+    phone_match = re.search(r'([+]?[0-9\s\-\(\)]{8,})', text)
+    quote_match = re.search(r'(?:Quote|Quotation)\s*(?:Number|#)?:?\s*([A-Z0-9\-]+)', text, re.IGNORECASE)
+    
     return {
-        "company_name": "ABC Stationery Supplies Pte Ltd.",
-        "email": "contact@abcstationery.com",
-        "phone": "+65 6123 4567",
-        "address": "10 Anson Road, #15-01 International Plaza Singapore 079903",
-        "buyer_name": "XYZ School Supplies",
-        "buyer_address": "25 Bukit Timah Road Singapore 259756",
-        "quote_number": "QTN-2025-001",
-        "date": "2025-08-18",
-        "items": [
-            {"description": "Blue Ink Ballpoint Pen", "quantity": 50, "unit_price": 0.50, "total_amount": 25.00},
-            {"description": "A4 Size, 200 Pages Notebook", "quantity": 30, "unit_price": 2.00, "total_amount": 60.00},
-            {"description": "Heavy Duty Stapler", "quantity": 10, "unit_price": 5.00, "total_amount": 50.00}
-        ],
-        "subtotal": 135.00,
+        "company_name": company_match.group(1).strip() if company_match else "Unknown Company",
+        "email": email_match.group(1) if email_match else "",
+        "phone": phone_match.group(1).strip() if phone_match else "",
+        "address": "Address not extracted",
+        "buyer_name": "Buyer not specified",
+        "buyer_address": "Buyer address not specified",
+        "quote_number": quote_match.group(1) if quote_match else "Unknown",
+        "date": datetime.now().strftime('%Y-%m-%d'),
+        "items": [{"description": "Items could not be extracted", "quantity": 0, "unit_price": 0, "total_amount": 0}],
+        "subtotal": 0,
         "tax": 0,
-        "total": 135.00
+        "total": 0
     }
 
 def store_quotation(quotation_id, extracted_data, file_name, raw_text=""):
