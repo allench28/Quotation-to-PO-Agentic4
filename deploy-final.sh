@@ -88,11 +88,26 @@ aws apigateway create-deployment --rest-api-id $API_ID --stage-name prod --regio
 
 API_ENDPOINT="https://$API_ID.execute-api.$REGION.amazonaws.com/prod/upload"
 
+# Store environment variables in env-vars.json
+cat > env-vars.json << EOF
+{
+  "API_GW_URL": "$API_ENDPOINT",
+  "WEB_BUCKET": "$WEB_BUCKET",
+  "DOCS_BUCKET": "$DOCS_BUCKET",
+  "REGION": "$REGION",
+  "PROJECT_NAME": "$PROJECT_NAME"
+}
+EOF
+
 echo "🎨 Step 5/5: Frontend Deployment"
 echo "================================="
 
-# Update frontend with API endpoint
-sed -i "s/YOUR_API_GATEWAY_ENDPOINT/$API_ENDPOINT/g" frontend/index.html
+# Read API endpoint from env-vars.json
+API_GW_URL=$(cat env-vars.json | grep -o '"API_GW_URL": "[^"]*"' | cut -d'"' -f4)
+
+# Update frontend with API endpoint from env-vars.json
+sed -i "s|YOUR_API_GATEWAY_ENDPOINT|$API_GW_URL|g" frontend/index.html
+sed -i "s|https://[^']*execute-api[^']*|$API_GW_URL|g" frontend/index.html
 
 # Upload frontend
 aws s3 sync frontend/ s3://$WEB_BUCKET/

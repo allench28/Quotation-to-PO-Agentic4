@@ -208,10 +208,12 @@ def process_with_bedrock(text_content):
             ]
         }
         
+        print(f"Calling Bedrock with model: anthropic.claude-3-5-sonnet-20241022-v2:0")
         response = bedrock_client_east1.invoke_model(
-            modelId="anthropic.claude-3-haiku-20240307-v1:0",
+            modelId="anthropic.claude-3-5-sonnet-20241022-v2:0",
             body=json.dumps(request_body)
         )
+        print(f"Bedrock response received successfully")
         
         response_body = json.loads(response['body'].read())
         extracted_text = response_body['content'][0]['text']
