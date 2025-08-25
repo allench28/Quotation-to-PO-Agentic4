@@ -222,15 +222,22 @@ def process_with_bedrock(text_content):
             ]
         }
         
-        print(f"Calling Bedrock with model: anthropic.claude-3-5-sonnet-20241022-v2:0")
+        # Try Claude 3 Haiku first (more commonly available)
+        model_id = "anthropic.claude-3-haiku-20240307-v1:0"
+        print(f"Calling Bedrock with model: {model_id}")
+        print(f"Request body: {json.dumps(request_body, indent=2)}")
+        
         response = bedrock_client_east1.invoke_model(
-            modelId="anthropic.claude-3-5-sonnet-20241022-v2:0",
+            modelId=model_id,
             body=json.dumps(request_body)
         )
         print(f"Bedrock response received successfully")
+        print(f"Response status: {response.get('ResponseMetadata', {}).get('HTTPStatusCode')}")
         
         response_body = json.loads(response['body'].read())
+        print(f"Response body: {json.dumps(response_body, indent=2)}")
         extracted_text = response_body['content'][0]['text']
+        print(f"Extracted text from Bedrock: {extracted_text}")
         
         # Parse JSON from response
         start_idx = extracted_text.find('{')
@@ -245,7 +252,11 @@ def process_with_bedrock(text_content):
             return parse_fallback(text_content)
             
     except Exception as e:
-        print(f"Bedrock error: {e}, using fallback")
+        print(f"Bedrock error type: {type(e).__name__}")
+        print(f"Bedrock error message: {str(e)}")
+        import traceback
+        print(f"Bedrock error traceback: {traceback.format_exc()}")
+        print("Using fallback parsing...")
         return parse_fallback(text_content)
 
 def unused_bedrock_code():

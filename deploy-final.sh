@@ -49,7 +49,7 @@ echo "============================================="
 
 # Create Lambda layer with PDF dependencies
 mkdir -p lambda-layer/python && cd lambda-layer/python
-pip install fpdf2==2.7.6 fontTools==4.47.0 Pillow==10.1.0 defusedxml -t . --quiet
+pip install fpdf2==2.7.6 fontTools==4.47.0 Pillow==10.1.0 defusedxml PyPDF2==3.0.1 -t . --quiet
 cd .. && zip -r ../pdf-layer.zip python && cd ..
 
 LAYER_ARN=$(aws lambda publish-layer-version --layer-name ${PROJECT_NAME}-pdf-layer --zip-file fileb://pdf-layer.zip --compatible-runtimes python3.11 --region $REGION --query "LayerVersionArn" --output text)

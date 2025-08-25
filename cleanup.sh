@@ -4,6 +4,7 @@ echo "🧹 AI Quotation Processor - Resource Cleanup"
 echo "============================================="
 
 PROJECT_NAME="quotation-processor"
+PROJECT_NAME_FINAL="quotation-processor-final"
 REGION="us-east-1"
 
 echo "⚠️  This will delete ALL resources created by deploy-all.sh"
@@ -38,9 +39,17 @@ for api_id in $(aws apigateway get-rest-apis --query "items[?name=='${PROJECT_NA
     fi
 done
 
+for api_id in $(aws apigateway get-rest-apis --query "items[?name=='${PROJECT_NAME_FINAL}-api'].id" --output text --region $REGION); do
+    if [ ! -z "$api_id" ]; then
+        echo "Deleting API Gateway: $api_id"
+        aws apigateway delete-rest-api --rest-api-id $api_id --region $REGION
+    fi
+done
+
 # Step 3: Delete Lambda functions and layers
 echo "⚡ Step 3/7: Deleting Lambda functions and layers..."
 aws lambda delete-function --function-name ${PROJECT_NAME}-processor --region $REGION 2>/dev/null
+aws lambda delete-function --function-name ${PROJECT_NAME_FINAL}-processor --region $REGION 2>/dev/null
 
 for layer_arn in $(aws lambda list-layers --query "Layers[?LayerName=='${PROJECT_NAME}-pdf-layer'].LatestMatchingVersion.LayerVersionArn" --output text --region $REGION); do
     if [ ! -z "$layer_arn" ]; then
@@ -51,8 +60,17 @@ for layer_arn in $(aws lambda list-layers --query "Layers[?LayerName=='${PROJECT
     fi
 done
 
+for layer_arn in $(aws lambda list-layers --query "Layers[?LayerName=='${PROJECT_NAME_FINAL}-pdf-layer'].LatestMatchingVersion.LayerVersionArn" --output text --region $REGION); do
+    if [ ! -z "$layer_arn" ]; then
+        layer_name=$(echo $layer_arn | cut -d: -f7)
+        version=$(echo $layer_arn | cut -d: -f8)
+        echo "Deleting Lambda layer: $layer_name version $version"
+        aws lambda delete-layer-version --layer-name $layer_name --version-number $version --region $REGION
+    fi
+done
+
 # Step 4: Empty and delete S3 buckets
-echo "🗄️  Step 4/7: Emptying and deleting S3 buckets..."
+echo "🗜️  Step 4/7: Emptying and deleting S3 buckets..."
 for bucket in $(aws s3api list-buckets --query "Buckets[?starts_with(Name, '${PROJECT_NAME}')].Name" --output text); do
     if [ ! -z "$bucket" ]; then
         echo "Emptying bucket: $bucket"
@@ -65,12 +83,17 @@ done
 # Step 5: Delete DynamoDB table
 echo "📊 Step 5/7: Deleting DynamoDB table..."
 aws dynamodb delete-table --table-name ${PROJECT_NAME}-quotations --region $REGION 2>/dev/null
+aws dynamodb delete-table --table-name ${PROJECT_NAME_FINAL}-quotations --region $REGION 2>/dev/null
 
 # Step 6: Delete IAM role and policies
 echo "🔐 Step 6/7: Deleting IAM role and policies..."
 aws iam delete-role-policy --role-name ${PROJECT_NAME}-role --policy-name ${PROJECT_NAME}-policy 2>/dev/null
 aws iam delete-role-policy --role-name ${PROJECT_NAME}-role --policy-name bedrock-prompt-policy 2>/dev/null
 aws iam delete-role --role-name ${PROJECT_NAME}-role 2>/dev/null
+
+aws iam delete-role-policy --role-name ${PROJECT_NAME_FINAL}-role --policy-name ${PROJECT_NAME_FINAL}-policy 2>/dev/null
+aws iam delete-role-policy --role-name ${PROJECT_NAME_FINAL}-role --policy-name bedrock-prompt-policy 2>/dev/null
+aws iam delete-role --role-name ${PROJECT_NAME_FINAL}-role 2>/dev/null
 
 # Step 7: Delete Bedrock prompts
 echo "🧠 Step 7/7: Deleting Bedrock prompts..."
